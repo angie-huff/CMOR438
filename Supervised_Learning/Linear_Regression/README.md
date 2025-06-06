@@ -65,5 +65,3 @@ To reduce variance, the dataset was also **grouped by hours studied** and averag
 - The raw data included noisy clusters, making the linear trend difficult to learn.
 - Grouping improved the signal-to-noise ratio and revealed a clean, linear relationship.
 - The model’s performance improved drastically after preprocessing.
-
-
