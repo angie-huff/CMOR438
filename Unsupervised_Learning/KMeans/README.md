@@ -6,15 +6,14 @@ This notebook uses K-Means clustering to explore patterns in student mental heal
 
 ## Dataset
 
-The dataset, titled **"Mental Health Assessment of University Students"**, consists of responses from **2,028 university students** collected through a Google Forms survey. It is publicly available on [Figshare](https://figshare.com/articles/dataset/MHP_Anxiety_Stress_Depression_Dataset_of_University_Students/25771164).
+The dataset used is the **"MHP (Anxiety, Stress, Depression) Dataset of University Students"**, which contains survey responses from **2,028 students** across multiple universities in Bangladesh. It was collected through a Google Form and is publicly available on Figshare.
 
-### Source
-- Distributed via: Figshare
-- Format: CSV
-- Instruments: The questions were adapted from the **PHQ-9** and **GAD-7**, with custom additions focused on academic stress and university life.
-- Responses are given on **5-point Likert scales**, with variations like:
-  - `"0 - Not at all"`, `"1 - Several days"`, `"2 - More than half the days"`, `"3 - Nearly every day"`
-  - `"0 - Never"` through `"4 - Very Often"`
+- **Source**: [MHP Dataset on Figshare](https://doi.org/10.6084/m9.figshare.25771164.v1)
+- **Format**: CSV
+- **Collection Year**: 2024
+- **Respondents**: University students, all academic years and majors
+- **Instruments**: Adapted from PHQ-9, GAD-7, and custom academic stress questions
+- **Response Format**: 5-point Likert scale (e.g., "0 - Not at all" to "3 - Nearly every day")
 
 ### Features Used
 
@@ -68,9 +67,9 @@ Each cluster reflects a distinct mental health profile:
 
 ---
 
-## File Structure
+## Dataset Citation
 
-- `MentalHealth.csv`: Cleaned survey dataset
-- `kmeans_notebook.ipynb`: Main notebook with all preprocessing, clustering, and visualization
-- `Supplementary file - Questionnaire.pdf`: Raw question text
-- `README.md`: This file
+Syeed, Mahbubul; Rahman, Ashifur; Akter, Laila; Fatema, Kaniz; Khan, Razib Hayat; Rajual Karim, Md.; *et al.* (2024).  
+**MHP (Anxiety, Stress, Depression) Dataset of University Students**. Figshare. Dataset.  
+[https://doi.org/10.6084/m9.figshare.25771164.v1](https://doi.org/10.6084/m9.figshare.25771164.v1)
+
