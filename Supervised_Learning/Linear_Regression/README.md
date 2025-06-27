@@ -1,59 +1,63 @@
 # Linear Regression
 
-The linear regression model is a foundational method in machine learning that aims to find the best-fitting straight line through a set of data points. Inspired by neurons in the brain, it mimics how a biological system might produce a continuous output from a weighted sum of inputs.
+Linear regression is one of the most foundational techniques in both statistics and machine learning. It models the relationship between an input feature and a continuous output by fitting a straight line to observed data points. Inspired by the basic idea of a biological neuron, it mimics how a system might generate a continuous response based on a weighted sum of inputs.
 
+In this project, a custom linear regression model was implemented from scratch using gradient descent, then applied to real-world-inspired data on student study habits and academic performance.
+
+---
 
 ## How Linear Regression Works
 
-Linear regression tries to model the relationship between two variables by fitting a straight line:
+The model assumes a linear relationship between input and output:
 
-ŷ = w * x + b
+\[
+\hat{y} = w \cdot x + b
+\]
 
 Where:
 - `w` is the weight (slope),
 - `b` is the bias (intercept),
-- `x` is the input feature,
-- `ŷ` is the predicted output.
+- `x` is the input (hours studied),
+- `ŷ` is the predicted performance.
 
-The model is trained to minimize the **Mean Squared Error (MSE)** between the actual values and predicted values:
+To minimize prediction error, the model uses **Mean Squared Error (MSE)** as a cost function:
 
-C(w, b) = (1/2) * (w * x + b - y)<sup>2</sup>
+\[
+C(w, b) = \frac{1}{2} (w \cdot x + b - y)^2
+\]
 
-To minimize this cost function, we use **gradient descent**, which updates the weight and bias based on the following derivatives:
+Gradient descent updates the parameters using:
 
-∂C/∂w = (w * x + b - y) * x \
-∂C/∂b = (w * x + b - y)
+- ∂C/∂w = (w * x + b - y) * x  
+- ∂C/∂b = (w * x + b - y)
 
 Update rules:
-
-w ← w - α * ∂C/∂w \
-b ← b - α * ∂C/∂b
+- `w ← w - α * ∂C/∂w`
+- `b ← b - α * ∂C/∂b`
 
 ---
 
 ## Task
 
-In this project, I built a linear regression model from scratch and applied it to a real-world dataset on student performance. The model was trained to predict a student’s performance index based on the number of hours they studied.
+This project builds a linear regression model from scratch and applies it to the **Student Performance** dataset to predict a student’s academic score (`Performance Index`) based on the number of hours they studied (`Hours Studied`).
 
+Both the raw data and a grouped version (averaged by hour) were used to compare performance and evaluate the impact of preprocessing.
+
+---
 
 ## Dataset
 
-The dataset used for this algorithm is the **Student Performance** dataset, which includes:
-- `Hours Studied` – input feature
-- `Performance Index` – target output
+**Source**: Student Performance dataset (synthetic or simplified educational dataset)
 
-To reduce variance, the dataset was also **grouped by hours studied** and averaged. This created a clearer linear pattern and improved model accuracy.
+**Features**:
+- `Hours Studied` – input feature representing number of hours studied
+- `Performance Index` – target output representing academic score
 
+**Preprocessing**:
+- Removed missing values
+- Grouped by hours studied and averaged performance to reduce variance
 
-## Libraries
-
-- [NumPy](https://numpy.org/)
-- [Pandas](https://pandas.pydata.org/)
-- [Matplotlib](https://matplotlib.org/)
-- [Seaborn](https://seaborn.pydata.org/)
-- [Scikit-learn](https://scikit-learn.org/) 
-
-
+---
 
 ## Results
 
@@ -62,6 +66,23 @@ To reduce variance, the dataset was also **grouped by hours studied** and averag
 | Raw Data      | 326.37  |
 | Grouped Data  | 6.20    |
 
-- The raw data included noisy clusters, making the linear trend difficult to learn.
-- Grouping improved the signal-to-noise ratio and revealed a clean, linear relationship.
-- The model’s performance improved drastically after preprocessing.
+- Training on raw data yielded high error due to overlapping clusters and noise.
+- Grouping the data revealed a much clearer linear trend and allowed for drastically better performance.
+- The decreasing MSE over epochs confirmed that gradient descent effectively minimized the cost.
+
+---
+
+## Interpretation and Limitations
+
+- The model identified a clear positive trend between hours studied and performance.
+- This result aligns with expectations in educational research: more study generally improves outcomes.
+- However, the model assumes a linear relationship and only uses one feature. Real student performance depends on many factors (prior knowledge, test difficulty, mental health, etc.).
+- The simplicity of the dataset may not reflect the complexity of real-world data, limiting the generalizability of the model.
+
+---
+
+## Real-World Significance
+
+This project illustrates the power and limitations of linear models. While not perfect predictors, they offer interpretable insights and serve as a strong foundation for understanding more advanced machine learning techniques.
+
+In practice, linear regression can be useful for early intervention systems, education policy modeling, and personal learning analytics — provided the data quality and assumptions are handled with care.
