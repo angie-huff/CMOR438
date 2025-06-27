@@ -2,103 +2,115 @@
 
 ## Overview
 
-This project provides a complete implementation of **logistic regression from scratch**
+This project provides a complete implementation of **logistic regression from scratch**.
 
-Logistic regression is a foundational machine learning algorithm for **binary classification**, where the target variable is either 0 or 1. In this notebook, we:
+Logistic regression is a foundational algorithm for **binary classification**, where the goal is to predict whether an input belongs to class 0 or class 1. In this notebook, we:
 
 - Explain logistic regression mathematically
-- Build the model from scratch in Python
-- Train and evaluate it using a custom-generated dataset
+- Build the model using NumPy
+- Train and evaluate it on a synthetic dataset
 - Visualize the decision boundary
-- Track the loss during training
+- Track the loss during training to observe convergence
 
 ---
 
 ## What Is Logistic Regression?
 
-Logistic regression models the **probability** that a given input belongs to a particular class using a **sigmoid function**.
+Logistic regression models the **probability** that an input belongs to a certain class using a **sigmoid activation function**. It maps real-valued inputs into the (0, 1) range.
 
 ### 1. Linear Combination (Logit Function)
-
-We first compute a weighted sum of the inputs:
-
-z = w · x + b
-
+\[
+z = \mathbf{w} \cdot \mathbf{x} + b
+\]
 
 Where:
-- `x` is the input vector  
+- `x` is the input feature vector  
 - `w` is the weight vector  
-- `b` is the bias term
+- `b` is the bias
 
 ### 2. Sigmoid Activation Function
+\[
+\hat{y} = \frac{1}{1 + e^{-z}}
+\]
 
-The sigmoid function transforms `z` into a probability between 0 and 1:
-
-ŷ = 1 / (1 + e^(-z))
-
-
-This output is interpreted as the probability that the instance belongs to **class 1**.
+This output is interpreted as the **probability that the instance belongs to class 1**.
 
 ### 3. Binary Cross-Entropy Loss
-
-The loss function used is **binary cross-entropy**, which penalizes incorrect predictions:
-
-L = -(1/N) * Σ [ y * log(ŷ) + (1 - y) * log(1 - ŷ) ]
-
+\[
+L = -\frac{1}{N} \sum \left[ y \log(\hat{y}) + (1 - y) \log(1 - \hat{y}) \right]
+\]
 
 Where:
 - `y` is the true label  
 - `ŷ` is the predicted probability  
-- `N` is the number of training samples
+- `N` is the number of samples
 
 ### 4. Gradient Descent
 
-The weights and bias are updated to minimize the loss:
+Weights and bias are updated using the gradient of the loss function:
 
-w_j ← w_j - α * ∂L/∂w_j
-b ← b - α * ∂L/∂b
-
-
-Where `α` is the learning rate.
+\[
+w_j \leftarrow w_j - \alpha \cdot \frac{\partial L}{\partial w_j}, \quad b \leftarrow b - \alpha \cdot \frac{\partial L}{\partial b}
+\]
 
 ### 5. Prediction Rule
 
-After training, predictions are converted to class labels using a threshold:
+Class prediction is determined using a threshold:
 
-ŷ ≥ 0.5 → class 1
-ŷ < 0.5 → class 0
-
+- If ŷ ≥ 0.5 → class 1  
+- If ŷ < 0.5 → class 0
 
 ---
 
 ## Dataset
 
-We used a **synthetic dataset** generated for this project, specifically crafted for logistic regression. It features:
+We used a **synthetic dataset** designed for clarity and interpretability in binary classification tasks. It contains:
 
-- Two features (`x1`, `x2`)
+- Two input features (`x1`, `x2`)
 - Binary labels (0 or 1)
-- A clear nonlinear boundary
+- A moderate degree of linear separability, generated from two 2D Gaussian distributions
 
-Using a synthetic dataset avoids complications from noise or imbalance and enables effective visualization of decision boundaries.
+This clean setup allows us to:
+- Focus on understanding the model behavior
+- Visualize the decision boundary in 2D
+- Avoid distractions like noise, imbalance, or missing data
 
 ---
 
 ## Results
 
-- The model was trained using **stochastic gradient descent**.
-- Evaluation included:
+- The model was trained using **stochastic gradient descent** on mini-batches.
+- Performance was evaluated using:
   - Accuracy
-  - Precision, Recall, F1-score
+  - Precision, Recall, and F1-score
   - Confusion matrix
-- We **visualized the decision boundary** to illustrate how logistic regression separates the two classes.
-- We also **plotted the training loss across epochs**, showing convergence.
+- The **decision boundary** was visualized to show how the model separates the two classes.
+- The **training loss** was plotted over time, showing convergence to a minimum.
 
 ---
 
-## Libraries Used
+## Interpretation and Real-World Relevance
 
-- `NumPy`
-- `Matplotlib`
-- `scikit-learn` (for evaluation metrics and data generation)
+Although trained on synthetic data, this project demonstrates the essential logic behind logistic regression: how it learns a linear boundary in feature space and assigns class probabilities.
+
+In real-world applications, logistic regression is widely used because it is:
+- Fast and easy to train
+- Probabilistically interpretable
+- Resilient with small datasets
+
+Examples include:
+- Medical diagnosis (e.g., disease vs. no disease)
+- Credit scoring (default vs. no default)
+- Email filtering (spam vs. not spam)
+
+---
+
+## Limitations
+
+- **Linear Separability**: Logistic regression struggles with datasets that are not linearly separable without advanced feature engineering.
+- **Synthetic Simplicity**: The dataset lacks real-world complexity such as noise, class imbalance, or missing values.
+- **No Regularization**: Our scratch implementation lacks techniques like L1/L2 regularization, which are critical for robustness in practice.
+
+Despite these, the model offers clear educational value and is still used professionally as a fast, transparent baseline.
 
 ---
