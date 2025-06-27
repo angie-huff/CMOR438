@@ -1,26 +1,29 @@
 # Data Science & Machine Learning
+![](./MachineLearning.png)
 
-This repository documents the implementation and evaluation of core machine learning algorithms in a structured, end-to-end project format. It reflects the development process of a typical machine learning pipeline—starting from data analysis and model selection, to training, validation, and interpretation.
+This repository showcases the end-to-end implementation of core machine learning algorithms — from scratch and with libraries — applied to real-world datasets in the domains of **psychology**, **education**, and **public opinion**. It reflects both the technical rigor of model-building and the interpretive thinking needed to draw meaningful conclusions from human data.
 
----
-
-## About the Project
-
-Machine learning can be broadly divided into:
-
-- **Supervised Learning**: Learning from labeled data to make predictions.
-  - **Regression**: Predict continuous values (e.g., performance scores).
-  - **Classification**: Predict categories (e.g., personality type, political ideology).
-
-- **Unsupervised Learning**: Finding patterns in unlabeled data.
-  - **Clustering**: Grouping observations based on feature similarity.
-  - (Note: This project focuses only on **clustering**, not anomaly detection.)
-
-To enable meaningful comparisons, multiple algorithms were applied to a **shared dataset whenever feasible**, enabling apples-to-apples insights across model types.
+The work was completed as part of a university course project and is designed to demonstrate mastery of the full machine learning pipeline: data preparation, model selection, training, evaluation, and interpretation. Special attention is given to **psychologically relevant variables** (e.g., personality, stress, happiness), linking model behavior to social insights.
 
 ---
 
-## Folder Structure
+## Project Purpose
+
+This repository serves two educational goals:
+
+1. **Conceptual Understanding**  
+   - Implement classic machine learning algorithms (e.g., linear regression, KNN, decision trees, neural nets)
+   - Learn how hyperparameters, loss functions, and optimization affect performance
+
+2. **Applied Insight**  
+   - Use real survey data to understand how psychological traits (e.g., openness, depression) are modeled
+   - Evaluate which models work best in predicting human outcomes, and why
+
+By applying multiple algorithms to **shared datasets**, the project enables controlled comparisons between models while grounding technical concepts in social applications.
+
+---
+
+## Structure
 
 ```bash
 CMOR438/
@@ -46,35 +49,39 @@ CMOR438/
 ├── MentalHealthCodebook.pdf
 ├── Supplementary file - Questionnaire.pdf
 ├── final_project_summary_README.md (this file)
+```
+
+---
 
 ## Datasets Used
 
 ### MHP Mental Health Dataset (2024)
-- Psychological survey of **2,028 university students**
-- Measures **academic stress**, **anxiety**, and **depression**
-- Used in all **unsupervised learning notebooks**
-
----
+- Survey of **2,028 university students**
+- Captures academic stress, anxiety, and depression scores
+- Used in all **unsupervised learning** notebooks
 
 ### General Social Survey (GSS) 2018
-- U.S. public opinion and demographic survey
-- Used in supervised models to predict **happiness** and **political ideology**
-
----
+- Large U.S. public opinion survey
+- Used for **supervised tasks** (e.g., happiness classification)
 
 ### Big Five Personality Inventory
-- IPIP-style self-report questionnaire
-- Used to classify **openness** and other **personality traits**
-
----
+- Self-report items from an IPIP-style openness questionnaire
+- Used to classify individuals by **Openness to Experience**
 
 ### Student Performance (Synthetic)
-- Toy dataset with simple variables (e.g., **hours studied**, **test score**)
-- Used to demonstrate **regression** and **gradient descent**
+- Simplified data on hours studied and test scores
+- Used to explain **regression** and **gradient descent** conceptually
 
 ---
 
-- Every notebook includes **detailed markdown explanations** and **social or psychological interpretations**
-- Visualizations help **interpret model behavior** and highlight strengths/limitations
-- Consistent use of **shared datasets** enables valid model comparisons
-- Clustering methods are tied to **real-world mental health implications**, not just abstract math
+## Features of This Repository
+
+- Each notebook includes **in-depth markdown**, math explanations, and training visualizations
+- Clear **social or psychological interpretations** accompany all model results
+- Consistent use of **standardized datasets** for apples-to-apples model comparison
+- Emphasis on **limitations**, **interpretability**, and **real-world implications**
+- Unsupervised learning is framed in terms of **mental health research**, not just mathematical grouping
+
+---
+
+This repository is meant to bridge the gap between **machine learning theory** and **real-world insight**, especially in contexts where understanding people matters as much as predicting outcomes.
