@@ -2,50 +2,88 @@
 
 ## Introduction
 
-The Perceptron is one of the simplest types of artificial neural networks and serves as the foundational building block for more complex architectures. Inspired by the human neuron, it receives multiple inputs, each associated with a weight, and produces a binary output through an activation function. The learning process adjusts the weights based on the error between predicted and actual outputs using the Perceptron Learning Rule.
+The Perceptron is one of the simplest and most foundational types of artificial neural networks. Introduced by Frank Rosenblatt in 1958, it acts as a linear binary classifier that separates data into two classes using a weighted summation and a step function. While basic in structure, the Perceptron plays a crucial role in understanding how more complex models like multi-layer neural networks operate.
 
-This project implements the Perceptron algorithm from scratch and applies it to real-world survey data to predict subjective happiness based on individuals' self-rated health and financial satisfaction.
+This project implements the Perceptron algorithm from scratch and applies it to data from the **General Social Survey (GSS) 2018** to predict whether individuals are "Very Happy" based on two key self-assessments: health and financial satisfaction.
 
 ## How the Perceptron Model Works
 
-The Perceptron Network functions as a linear binary classifier using a "hardlim" (unit step) activation function. It performs classification in two steps:
-- **Summation function**: Computes a weighted sum of input features and a bias.
-- **Transfer function**: Applies the step function to generate binary output (0 or 1).
+The Perceptron learns to classify inputs by adjusting weights and a bias term through iterative training. It uses:
 
-The model is trained using labeled data, adjusting its weights during each iteration (epoch) to minimize misclassifications.
+- **Summation Function**:
+  \[
+  z = \sum w_i x_i + b
+  \]
 
-Mathematically:
-```
-output = 1 if (w · x + b) ≥ 0 else 0
-```
+- **Step Activation Function**:
+  \[
+  \text{output} = 
+  \begin{cases}
+    1 & \text{if } z \geq 0 \\
+    0 & \text{otherwise}
+  \end{cases}
+  \]
+
+The Perceptron updates weights using the Perceptron Learning Rule, which corrects errors by moving weights in the direction that reduces misclassification.
 
 ## Task
 
-In this notebook, we:
-- Load and preprocess the **General Social Survey (GSS) 2018** dataset
-- Convert multi-class labels to binary (1 for 'Very Happy', 0 otherwise)
-- Train a custom Perceptron model on survey features (health, financial satisfaction)
-- Evaluate performance using accuracy, precision, recall, and confusion matrix
+This project performs the following:
+
+- Load and preprocess the 2018 General Social Survey (GSS) dataset
+- Filter the `HAPPY` variable to only include “Very Happy” and “Pretty Happy” responses
+- Recode labels to binary: 1 = Very Happy, 0 = Pretty Happy
+- Train a Perceptron model using two features:
+  - Self-reported health (`HEALTH`)
+  - Financial satisfaction (`SATFIN`)
+- Visualize the data by label to observe separation patterns
+- Evaluate model performance using:
+  - Accuracy
+  - Precision
+  - Recall
+  - F1-score
+  - Confusion Matrix
 
 ## Dataset
 
-**Source**: General Social Survey (2018)
+**Source**: [General Social Survey (GSS) 2018](https://gssdataexplorer.norc.org)
 
-**Features Used**:
-- `HEALTH`: Self-reported health
-- `SATFIN`: Satisfaction with financial situation
+**Variables Used**:
+- `HAPPY`: Subjective happiness, filtered to include only “Very Happy” (1) and “Pretty Happy” (2)
+- `HEALTH`: Self-reported health on a 1–4 scale (1 = Excellent, 4 = Poor)
+- `SATFIN`: Satisfaction with financial situation on a 1–3 scale (1 = Pretty Satisfied, 3 = Not at All)
 
-**Label**:
-- `HAPPY`: Recoded to 1 (Very Happy), 0 (All others)
-
-## Libraries Used
-
-- [Pandas](https://pandas.pydata.org/)
-- [NumPy](https://numpy.org/)
-- [Matplotlib](https://matplotlib.org/)
-- [Seaborn](https://seaborn.pydata.org/)
-- [Scikit-learn](https://scikit-learn.org/)
+**Preprocessing**:
+- Dropped missing values
+- Filtered responses to only the top two happiness categories
+- Recoded labels to binary (1 = Very Happy, 0 = Pretty Happy)
 
 ## Results
 
-Despite the simplicity of the model, it was able to classify a majority class effectively. However, the performance was skewed due to class imbalance. This project shows the importance of data preprocessing and evaluation in machine learning workflows.
+The Perceptron achieved **65% accuracy**, largely by correctly identifying the majority class ("Pretty Happy"). However, its performance on the minority class ("Very Happy") was weak:
+
+- **Recall (Very Happy)**: 16%
+- **F1-score (Very Happy)**: 0.24
+- **Confusion Matrix** revealed significant false negatives
+
+These results reflect:
+- **Class imbalance** skewing model predictions
+- **Linear separability limits** of the Perceptron for subjective data
+- The importance of using more complex models or feature-rich inputs in real-world applications
+
+## Limitations
+
+- Only two features used — happiness is likely influenced by many additional factors
+- No oversampling or class-weight adjustment for imbalance
+- Self-reported measures introduce subjectivity and potential bias
+- Linear model cannot capture nonlinear decision boundaries
+
+## Real-World Interpretation
+
+Despite its simplicity, this model highlights the relationship between **self-rated health**, **financial well-being**, and **subjective happiness**. It also underscores challenges in modeling human sentiment using minimal features and linear methods.
+
+The results suggest that improving public health and economic stability could meaningfully impact happiness — insights valuable for social science, policy, and behavioral research.
+
+## Dataset Citation
+
+Davern, Michael; Bautista, Rene; Freese, Jeremy; Herd, Pamela; and Morgan, Stephen L.; General Social Survey 1972-2024. [Machine-readable data file]. Principal Investigator, Michael Davern; Co-Principal Investigators, Rene Bautista, Jeremy Freese, Pamela Herd, and Stephen L. Morgan. Sponsored by National Science Foundation. NORC ed. Chicago: NORC, 2025: NORC at the University of Chicago [producer and distributor]. Data accessed from the GSS Data Explorer website at [gssdataexplorer.norc.org](https://gssdataexplorer.norc.org).
