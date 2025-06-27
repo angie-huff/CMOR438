@@ -4,3 +4,9 @@ Supervised_Learning/KNN/Personality.csv
 neuralnetwork.png
 Supervised_Learning/Neural_Network/Personality.csv
 Supervised_Learning/Neural_Network/Personality.csv
+.ipynb_checkpoints/
+.DS_Store
+__pycache__/
+*.pyc
+venv/
+env/
