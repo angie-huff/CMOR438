@@ -1,4 +1,5 @@
 # Data Science & Machine Learning
+## By Angie Huff
 ![](./MachineLearning.png)
 
 This repository showcases the end-to-end implementation of core machine learning algorithms — from scratch and with libraries — applied to real-world datasets in the domains of **psychology**, **education**, and **public opinion**. It reflects both the technical rigor of model-building and the interpretive thinking needed to draw meaningful conclusions from human data.
